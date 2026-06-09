@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCA Premium Live Test</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #eef2f5; 
+            color: #333;
+            padding: 20px; 
+            margin: 0;
+        }
+        .container { 
+            background: white; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 30px; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1); 
+            border-top: 8px solid #1a5276; 
+            border-radius: 8px;
+        }
+        .header { text-align: center; border-bottom: 2px solid #1a5276; padding-bottom: 15px; margin-bottom: 25px; }
+        .header h1 { margin: 0; color: #1a5276; font-size: 26px; }
+        .header h2 { margin: 5px 0 0; color: #555; font-size: 16px; }
+        .instructions { background: #fef9e7; padding: 15px; border-left: 5px solid #f39c12; font-size: 14px; margin-bottom: 25px; border-radius: 4px; }
+        .section-title { background: #1a5276; color: white; padding: 10px 15px; font-size: 16px; font-weight: bold; margin: 30px 0 15px 0; border-radius: 4px; }
+        .question-block { margin-bottom: 20px; padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; }
+        .question-text { font-weight: 600; color: #1e293b; margin-bottom: 12px; font-size: 15px; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .option-label { display: flex; align-items: center; padding: 8px 12px; background: white; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; transition: 0.2s; font-size: 14px; }
+        .option-label:hover { background: #f1f5f9; }
+        .option-label input { margin-right: 10px; cursor: pointer; }
+        
+        /* Result Highlights */
+        .correct-answer { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724 !important; font-weight: bold; }
+        .wrong-answer { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24 !important; text-decoration: line-through; }
+        
+        .submit-btn { display: block; width: 100%; padding: 15px; background: #1a5276; color: white; border: none; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 30px; transition: 0.3s; }
+        .submit-btn:hover { background: #154360; }
+        
+        #result-box { display: none; background: #d4edda; color: #155724; border: 2px solid #28a745; padding: 20px; margin-top: 30px; text-align: center; border-radius: 8px; font-size: 22px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>12th - LIVE EXAM PORTAL</h1>
+        <h3>गाँव का घर Online Test (Questions)</h3>
+<h2 style="font-size:10px; color:#888; font-weight:normal;">
+    यह test sangam (in id-@sangam__zero) द्वारा बनाया गया है। यदि आप भी अपने लिए इसी प्रकार का online test बनवाना चाहते हैं, तो 9241967602 पर Message कर सकते हैं।</h2>
+    </div>
+
+    <div class="instructions">
+        <strong>निर्देश:</strong> सभी प्रश्नों के उत्तर दें। प्रत्येक प्रश्न के 4 विकल्प हैं। परीक्षण पूरा करने के बाद <strong>"Submit Test"</strong> पर क्लिक करें ताकि आप अपना स्कोर और सही उत्तर देख सकें।
+    </div>
+
+    <form id="quizForm">
+        
+        <!-- SECTION 01 -->
+        <div class="section-title">SECTION 01. </div>
+        
+        <script>
+            // All 50 Questions Data (Generated Dynamically for clean code)
+           const questions = [
+                // SECTION - गाँव का घर (ज्ञानेंद्रपति) - Hindi 12th Objective Questions
+                { q: "1. ज्ञानेंद्रपति ने कौन-सी कविता लिखी है ?", opt: ["हार-जीत", "गाँव का घर", "उषा", "पुत्र वियोग"], ans: 1 },
+                { q: "2. ज्ञानेंद्रपति किस काल के कवि हैं ?", opt: ["भक्तिकाल", "रीतिकाल", "आधुनिक काल", "प्रेमचंद काल"], ans: 2 },
+                { q: "3. ज्ञानेंद्रपति बीसवीं शती के किस दशक में उदित हुए ?", opt: ["पाँचवे दशक में", "छठे दशक में", "आठवें दशक में", "अन्तिम दशक में"], ans: 2 },
+                { q: "4. ज्ञानेंद्रपति के पिता का नाम क्या था ?", opt: ["देवेन्द्र प्रसाद चौबे", "नरेन्द्र प्रसाद चौबे", "इन्द्र प्रसाद चौबे", "इनमें से कोई नहीं"], ans: 0 },
+                { q: "5. ज्ञानेंद्रपति ने बी०ए० तथा अंग्रेजी में एम०ए० किस विश्वविद्यालय से किए ?", opt: ["बिहार विश्वविद्यालय, मुजफ्फरपुर", "मगध विश्वविद्यालय, बोधगया", "पटना विश्वविद्यालय, पटना", "इलाहाबाद विश्वविद्यालय, इलाहाबाद"], ans: 2 },
+                { q: "6. ज्ञानेंद्रपति ने हिन्दी में एम०ए० किस विश्वविद्यालय से किया ?", opt: ["दिल्ली विश्वविद्यालय, दिल्ली", "कानपुर विश्वविद्यालय, कानपुर", "पटना विश्वविद्यालय, पटना", "बिहार विश्वविद्यालय, मुजफ्फरपुर"], ans: 3 },
+                { q: "7. ज्ञानेंद्रपति को उनकी किस रचना के लिए 2006 में साहित्य अकादमी पुरस्कार प्रदान किया गया ?", opt: ["संशयात्मा", "भिनसार", "कवि ने कहा", "पढ़ते-पढ़ते"], ans: 0 },
+                { q: "8. गाँव में किसकी धुनें सुनाई नहीं पड़ती हैं ?", opt: ["फिल्मी गीत की", "शोक गीत की", "लोकगीत की", "इनमें से कोई नहीं"], ans: 2 },
+                { q: "9. ज्ञानेंद्रपति की रचना 'एकचक्रानगरी' क्या है ?", opt: ["कहानी", "काव्य नाटक", "उपन्यास", "शोक गीत"], ans: 1 },
+                { q: "10. कौन-सी रचना ज्ञानेंद्रपति की नहीं है ?", opt: ["संशयात्मा", "भिनसार", "कवि ने कहा", "थोड़ी सी जगह"], ans: 3 },
+                { q: "11. कौन-सी रचना ज्ञानेंद्रपति की है ?", opt: ["सबकुछ बचा रहेगा", "मुकुल", "गंगातट", "आँसू"], ans: 2 },
+                { q: "12. 'आँख हाथ बनते हुए' कविता किस कवि की रचना है ?", opt: ["ज्ञानेंद्रपति", "मुक्तिबोध", "रघुवीर सहाय", "अशोक वाजपेयी"], ans: 0 },
+                { q: "13. गाँव के घर के भीतर आने से पहले किसे खास कर आना पड़ता था ?", opt: ["युवकों को", "बच्चों को", "महिलाओं को", "इनमें से कोई नहीं"], ans: 2 },
+                { q: "14. ज्ञानेंद्रपति के अनुसार, पंचायती राज में क्या खत्म हो गया है ?", opt: ["मुखिया", "सरपंच", "पंच परमेश्वर", "इनमें से कोई नहीं"], ans: 2 },
+                { q: "15. 'संशयात्मा' किसकी कृति है ?", opt: ["ज्ञानेंद्रपति", "मुक्तिबोध", "अशोक वाजपेयी", "रघुवीर सहाय"], ans: 0 },
+                { q: "16. दूध-डूबे अंगूठे के छापे किनके हैं ?", opt: ["दादी के", "माँ के", "बूढ़े ग्वाल दादा के", "इनमें किसी की नहीं"], ans: 2 },
+                { q: "17. ज्ञानेंद्रपति का काव्य नाटक है-", opt: ["पढ़ते-पढ़ते", "भिनसार", "गंगातट", "एकचक्रानगरी"], ans: 3 },
+                { q: "18. ज्ञानेंद्रपति सरकारी सेवा में क्या थे ?", opt: ["कारा अधीक्षक", "दंडाधिकारी", "अभियंता", "चिकित्सक"], ans: 0 },
+                { q: "19. ज्ञानेंद्रपति का जन्म कब हुआ था ?", opt: ["1 जनवरी, 1950 को", "10 जनवरी, 1949 को", "18 फरवरी, 1952 को", "25 जनवरी, 1948 को"], ans: 0 },
+                { q: "20. ज्ञानेंद्रपति को 'साहित्य अकादमी पुरस्कार' किस कृति पर मिला था ?", opt: ["आँख हाथ बनते हुए", "संशयात्मा", "गंगातट", "पढ़ते-पढ़ते"], ans: 1 },
+                { q: "21. 'गाँव का घर' कविता के कवि हैं –", opt: ["अशोक वाजपेयी", "ज्ञानेंद्रपति", "रघुवीर सहाय", "शमशेर बहादुर सिंह"], ans: 1 },
+                { q: "22. 'गाँव का घर' किस कविता-संग्रह से लिया गया है ?", opt: ["'आँख हाथ बनते हुए' से", "'गंगातट' से", "'कवि ने कहा' से", "'संशयात्मा' से"], ans: 3 },
+                { q: "23. ज्ञानेंद्रपति को किस कृति पर साहित्य अकादमी पुरस्कार प्राप्त हुआ ?", opt: ["'कवि ने कहा' पर", "'भिनसार' पर", "'संशयात्मा' पर", "'शब्द लिखने के लिए ही यह कागज बना है' पर"], ans: 2 },
+                { q: "24. ज्ञानेंद्रपति का जन्म कहाँ हुआ था ?", opt: ["उत्तर प्रदेश में", "राजस्थान में", "झारखंड में", "हरियाणा में"], ans: 2 }
+            ];
+            // Render Questions
+            questions.forEach((item, index) => {
+                if(index === 10) document.write('<div class="section-title">SECTION 02. </div>');
+                if(index === 20) document.write('<div class="section-title">SECTION 03. </div>');
+                if(index === 30) document.write('<div class="section-title">SECTION 04. </div>');
+                if(index === 40) document.write('<div class="section-title">SECTION 05. </div>');
+
+                let optionsHTML = '';
+                item.opt.forEach((option, i) => {
+                    optionsHTML += `
+                        <label class="option-label" id="label-q${index}-opt${i}">
+                            <input type="radio" name="q${index}" value="${i}">
+                            ${String.fromCharCode(97 + i)}) ${option}
+                        </label>`;
+                });
+
+                document.write(`
+                    <div class="question-block" id="qBlock${index}">
+                        <div class="question-text">${item.q}</div>
+                        <div class="options">${optionsHTML}</div>
+                    </div>
+                `);
+            });
+        </script>
+
+        <button type="button" class="submit-btn" onclick="calculateScore()">Submit Test & Check Result</button>
+    </form>
+
+    <div id="result-box"></div>
+
+</div>
+
+<script>
+    function calculateScore() {
+        let score = 0;
+        let total = questions.length;
+
+        questions.forEach((item, index) => {
+            // Get selected option
+            let selected = document.querySelector(`input[name="q${index}"]:checked`);
+            let correctValue = item.ans;
+            
+            // Highlight correct answer permanently
+            let correctLabel = document.getElementById(`label-q${index}-opt${correctValue}`);
+            correctLabel.classList.add("correct-answer");
+
+            if (selected) {
+                let selectedValue = parseInt(selected.value);
+                if (selectedValue === correctValue) {
+                    score++;
+                } else {
+                    // Highlight wrong answer if user selected it
+                    let wrongLabel = document.getElementById(`label-q${index}-opt${selectedValue}`);
+                    wrongLabel.classList.add("wrong-answer");
+                }
+            }
+        });
+
+        // Show Score
+        let resultBox = document.getElementById('result-box');
+        resultBox.style.display = "block";
+        
+        let percentage = (score / total) * 100;
+        let message = "";
+        
+        if(percentage >= 80) message = "उत्कृष्ट प्रदर्शन! 🌟";
+        else if(percentage >= 50) message = "अच्छा प्रयास, थोड़ी और मेहनत करें! 👍";
+        else message = "आपको और अभ्यास की आवश्यकता है! 📚";
+
+        resultBox.innerHTML = `आपका स्कोर: ${score} / ${total} <br><span style="font-size:18px; color:#333;">${message}</span>`;
+        
+        // Scroll to result
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
